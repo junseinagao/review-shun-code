@@ -16,7 +16,7 @@
       <div class="application">
         <p>Please enter the airport code you want to search from below.</p>
         <div>
-          <li v-for="value in arpCode">{{ value }}</li>
+          <li v-for="value in airport" :index="index">{{ value.arpCode }}</li>
         </div>
         <div>
           <input type="text" v-model="targetCode" />
