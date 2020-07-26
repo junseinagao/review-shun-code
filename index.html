@@ -8,30 +8,32 @@
   <body>
     <header><h1>Airport List</h1></header>
     <div id="app">
-      <div>Please enter the airport code you want to search from below.</div>
-      <div v-for="value in arpCode">{{ value }}</div>
-      <input type="text" v-model="targetCode" />
-      <button v-on:click="search">search!</button>
-      <div v-if="found">
-        <div>Code: {{ targetCode }}</div>
-        <div>City: {{ targetCity }}</div>
-        <div>Enplanements: {{ targetEnp }}</div>
-      </div>
-      <div v-else>Sorry, not found.</div>
-      <br /><br />
       <div>
-        Please type the departure and destination. This app calculates the
-        ticket price.
+        <div>Please enter the airport code you want to search from below.</div>
+        <div v-for="value in arpCode">{{ value }}</div>
+        <input type="text" v-model="targetCode" />
+        <button v-on:click="search">search!</button>
+        <div v-if="found">
+          <div>Code: {{ targetCode }}</div>
+          <div>City: {{ targetCity }}</div>
+          <div>Enplanements: {{ targetEnp }}</div>
+        </div>
+        <div v-else>Sorry, not found.</div>
       </div>
-      <br />
-      <div>Departure</div>
-      <input type="text" v-model="dep" />
-      <div>Destination</div>
-      <input type="text" v-model="des" />
-      <button v-on:click="recipt">search!</button>
-      <div>Departure: {{ dep }}</div>
-      <div>Destination: {{ des }}</div>
-      <div>Ticket price: {{ targetPrice }}</div>
+      <div>
+        <div>
+          Please type the departure and destination. This app calculates the
+          ticket price.
+        </div>
+        <div>Departure</div>
+        <input type="text" v-model="dep" />
+        <div>Destination</div>
+        <input type="text" v-model="des" />
+        <button v-on:click="recipt">search!</button>
+        <div>Departure: {{ dep }}</div>
+        <div>Destination: {{ des }}</div>
+        <div>Ticket price: {{ targetPrice }}</div>
+      </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="main.js"></script>
