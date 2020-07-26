@@ -185,7 +185,7 @@ const app = new Vue({
     found: false,
     dep: "",
     des: "",
-    targetPrice: 0,
+    targetPrice: "",
   },
   methods: {
     search: function () {
