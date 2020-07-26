@@ -53,7 +53,7 @@ const app = new Vue({
     targetCity: "",
     targetEnp: "",
     found: false,
-    index: 10,
+    // index: 10, // データサイズをハードコーディングするのは、smartでない。
     dep: "",
     des: "",
     depIndex: "",
@@ -73,8 +73,7 @@ const app = new Vue({
     },
     recipt: function () {
       this.targetPrice = 0;
-      let i = 0;
-      for (i = 0; i < this.index; i++) {
+      for (let i = 0; i < this.index; i++) {
         if (this.dep == this.arpCode[i]) {
           this.depIndex = i;
         }
