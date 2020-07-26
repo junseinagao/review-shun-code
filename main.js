@@ -62,9 +62,8 @@ const app = new Vue({
   },
   methods: {
     search: function () {
-      let i = 0;
       this.found = "";
-      for (i = 0; i < this.index; i++) {
+      for (let i = 0; i < this.index; i++) {
         if (this.targetCode == this.arpCode[i]) {
           this.found = "true";
           this.targetCity = this.city[i];
