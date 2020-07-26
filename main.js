@@ -1,14 +1,16 @@
 /**
  * 今回のリファクタリングの趣旨
  * arpCodeとcityとenpの配列はそれぞれ添え字で結びついてる値なのでオブジェクトにひとまとめに出来る。
- * なのでこれらを1つの配列とオブジェクトにまとめる。
+ * なのでこれらを1つのオブジェクトにまとめる。{{},{},{}}←この様なデータ構造
+ * [{},{},{}]←この様なデータ構造の方が楽かも知れない。
  */
 
 const app = new Vue({
   el: "#app",
   data: {
-    airport: [
-      {
+    airport: {
+      LAX: {
+        index: 0,
         arpCode: "LAX",
         city: "Los Angels",
         enp: "39636042",
@@ -25,7 +27,8 @@ const app = new Vue({
           "0",
         ],
       },
-      {
+      SFO: {
+        index: 1,
         arpCode: "SFO",
         city: "San Francisco",
         enp: "25707101",
@@ -42,7 +45,8 @@ const app = new Vue({
           "0",
         ],
       },
-      {
+      SAN: {
+        index: 2,
         arpCode: "SAN",
         city: "San Diego",
         enp: "10340164",
@@ -59,7 +63,8 @@ const app = new Vue({
           "160",
         ],
       },
-      {
+      OAK: {
+        index: 3,
         arpCode: "OAK",
         city: "Oakland",
         enp: "5934639",
@@ -76,13 +81,15 @@ const app = new Vue({
           "200",
         ],
       },
-      {
+      SJC: {
+        index: 4,
         arpCode: "SJC",
         city: "San Jose",
         enp: "5321603",
         pricetable: ["0", "0", "179", "0", "0", "275", "153", "0", "0", "256"],
       },
-      {
+      SNA: {
+        index: 5,
         arpCode: "SNA",
         city: "Santa Ana",
         enp: "5217242",
@@ -99,7 +106,8 @@ const app = new Vue({
           "323",
         ],
       },
-      {
+      SMF: {
+        index: 6,
         arpCode: "SMF",
         city: "Sacramento",
         enp: "4969366",
@@ -116,7 +124,8 @@ const app = new Vue({
           "0",
         ],
       },
-      {
+      ONT: {
+        index: 7,
         arpCode: "ONT",
         city: "Ontario",
         enp: "2104625",
@@ -133,7 +142,8 @@ const app = new Vue({
           "0",
         ],
       },
-      {
+      BUR: {
+        index: 8,
         arpCode: "BUR",
         city: "Burbank",
         enp: "2077892",
@@ -150,7 +160,8 @@ const app = new Vue({
           "120",
         ],
       },
-      {
+      LGB: {
+        index: 9,
         arpCode: "LGB",
         city: "Long Beach",
         enp: "1386357",
@@ -167,45 +178,34 @@ const app = new Vue({
           "0",
         ],
       },
-    ],
+    },
     targetCode: "",
     targetCity: "",
     targetEnp: "",
     found: false,
     dep: "",
     des: "",
-    targetPrice: "",
+    targetPrice: 0,
   },
   methods: {
     search: function () {
-      this.found = false; // なぜ文字列で"true"と""でv-if v-elseが動くのか:→"true"これはtrulyな値 true と判断される。→""これはfalsyな値。falseと判断される。s
-      for (let i = 0; i < this.arpCode.length; i++) {
-        if (this.targetCode == this.arpCode[i]) {
-          this.found = true;
-          this.targetCity = this.city[i];
-          this.targetEnp = this.enp[i];
-        }
+      this.found = false; // なぜ文字列で"true"と""でv-if v-elseが動くのか:→"true"これはtrulyな値 true と判断される。→""これはfalsyな値。falseと判断される。
+      if (this.airport[this.targetCode] != null) {
+        this.found = true;
+        this.targetCity = this.airport[this.targetCode].city;
+        this.targetEnp = this.airport[this.targetCode].enp;
       }
     },
     recipt: function () {
-      let depIndex = -1;
-      let desIndex = -1;
       this.targetPrice = 0;
-      for (let i = 0; i < this.index; i++) {
-        if (this.dep == this.arpCode[i]) {
-          depIndex = i;
-        }
-        if (this.des == this.arpCode[i]) {
-          desIndex = i;
-        }
-      }
-      // js では == と === がある。 == は比較するモノの型変換を勝手に行う。 === は型変換を行わない。
-      if (depIndex === -1 && desIndex === -1) {
-        this.computePrice(depIndex, desIndex);
+      if (this.airport[this.dep] != null && this.airport[this.sep] != null) {
+        this.computePrice();
       }
     },
-    computePrice: function (depIndex, desIndex) {
-      this.targetPrice = this.price[this.depIndex][this.desIndex];
+    computePrice: function () {
+      const index = this.airport[this.dep].index;
+      const price = this.airport[this.dep].pricetable[index];
+      this.targetPrice = price;
     },
   },
 });
