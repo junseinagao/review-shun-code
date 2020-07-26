@@ -12,9 +12,7 @@ const app = new Vue({
       "ONT",
       "BUR",
       "LGB",
-    ], //"PSP", "FAT",
-    //"SBA", "MRY", "STS", "SBP", "BFL", "SCK",
-    //"ACV", "RDD", "SMX", "MMH", "CEC", "CRQ", "CIC"],
+    ],
     city: [
       "Los Angels",
       "San Francisco",
@@ -27,10 +25,6 @@ const app = new Vue({
       "Burbank",
       "Long Beach",
     ],
-    //"Palm Springs", "Fresno", "Santa Barbara", "Monterey", "Santa Rosa",
-    //"San Louis Obispo", "Bakersfield", "Stockton", "Acarta / Eureka",
-    //"Redding", "Santa Maria", "Mammoth Lakes", "Crescent City",
-    //"Carlsbad", "Chico"],
     enp: [
       "39636042",
       "25707101",
@@ -42,9 +36,7 @@ const app = new Vue({
       "2104625",
       "2077892",
       "1386357",
-    ], //"995801", "761298", "329751",
-    //"192136", "167151", "162719", "100433", "93076", "69732", "43414", "40120",
-    //"21826", "8667", "180", "0"],
+    ],
     price: [
       ["0", "158", "165", "0", "0", "120", "200", "168", "0", "0"],
       ["158", "0", "200", "0", "0", "150", "130", "120", "138", "0"],
