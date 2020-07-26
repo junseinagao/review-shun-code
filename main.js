@@ -52,7 +52,7 @@ const app = new Vue({
     targetCode: "",
     targetCity: "",
     targetEnp: "",
-    found: "",
+    found: false,
     index: 10,
     dep: "",
     des: "",
@@ -62,10 +62,10 @@ const app = new Vue({
   },
   methods: {
     search: function () {
-      this.found = "";
+      this.found = false;
       for (let i = 0; i < this.index; i++) {
         if (this.targetCode == this.arpCode[i]) {
-          this.found = "true";
+          this.found = true;
           this.targetCity = this.city[i];
           this.targetEnp = this.enp[i];
         }
