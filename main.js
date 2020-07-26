@@ -14,7 +14,7 @@ const app = new Vue({
         arpCode: "LAX",
         city: "Los Angels",
         enp: "39636042",
-        pricetable: [
+        priceTable: [
           "0",
           "158",
           "165",
@@ -32,7 +32,7 @@ const app = new Vue({
         arpCode: "SFO",
         city: "San Francisco",
         enp: "25707101",
-        pricetable: [
+        priceTable: [
           "158",
           "0",
           "200",
@@ -50,7 +50,7 @@ const app = new Vue({
         arpCode: "SAN",
         city: "San Diego",
         enp: "10340164",
-        pricetable: [
+        priceTable: [
           "165",
           "200",
           "0",
@@ -68,7 +68,7 @@ const app = new Vue({
         arpCode: "OAK",
         city: "Oakland",
         enp: "5934639",
-        pricetable: [
+        priceTable: [
           "0",
           "0",
           "159",
@@ -86,14 +86,14 @@ const app = new Vue({
         arpCode: "SJC",
         city: "San Jose",
         enp: "5321603",
-        pricetable: ["0", "0", "179", "0", "0", "275", "153", "0", "0", "256"],
+        priceTable: ["0", "0", "179", "0", "0", "275", "153", "0", "0", "256"],
       },
       SNA: {
         index: 5,
         arpCode: "SNA",
         city: "Santa Ana",
         enp: "5217242",
-        pricetable: [
+        priceTable: [
           "120",
           "150",
           "210",
@@ -111,7 +111,7 @@ const app = new Vue({
         arpCode: "SMF",
         city: "Sacramento",
         enp: "4969366",
-        pricetable: [
+        priceTable: [
           "200",
           "130",
           "327",
@@ -129,7 +129,7 @@ const app = new Vue({
         arpCode: "ONT",
         city: "Ontario",
         enp: "2104625",
-        pricetable: [
+        priceTable: [
           "168",
           "120",
           "0",
@@ -147,7 +147,7 @@ const app = new Vue({
         arpCode: "BUR",
         city: "Burbank",
         enp: "2077892",
-        pricetable: [
+        priceTable: [
           "0",
           "138",
           "0",
@@ -165,7 +165,7 @@ const app = new Vue({
         arpCode: "LGB",
         city: "Long Beach",
         enp: "1386357",
-        pricetable: [
+        priceTable: [
           "0",
           "0",
           "160",
@@ -198,13 +198,13 @@ const app = new Vue({
     },
     recipt: function () {
       this.targetPrice = 0;
-      if (this.airport[this.dep] != null && this.airport[this.sep] != null) {
+      if (this.airport[this.dep] !== null && this.airport[this.sep] !== null) {
         this.computePrice();
       }
     },
     computePrice: function () {
       const index = this.airport[this.des].index;
-      const price = this.airport[this.dep].pricetable[index];
+      const price = this.airport[this.dep].priceTable[index];
       console.log(index);
       this.targetPrice = price;
     },
