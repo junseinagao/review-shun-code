@@ -14,9 +14,9 @@
     <header><h1>Airport List</h1></header>
     <div id="app">
       <div class="application">
-        <div>Please enter the airport code you want to search from below.</div>
+        <p>Please enter the airport code you want to search from below.</p>
         <div>
-          <div v-for="value in arpCode">{{ value }}</div>
+          <li v-for="value in arpCode">{{ value }}</li>
         </div>
         <div>
           <input type="text" v-model="targetCode" />
@@ -32,16 +32,16 @@
         </div>
       </div>
       <div class="application">
-        <div>
+        <p>
           Please type the departure and destination. This app calculates the
           ticket price.
-        </div>
+        </p>
         <div>
-          <div>Departure</div>
+          <span>Departure</span>
           <input type="text" v-model="dep" />
         </div>
         <div>
-          <div>Destination</div>
+          <span>Destination</span>
           <input type="text" v-model="des" />
         </div>
         <div>
