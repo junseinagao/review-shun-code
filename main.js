@@ -56,8 +56,8 @@ const app = new Vue({
     // index: 10, // データサイズをハードコーディングするのは、smartでない。
     dep: "",
     des: "",
-    depIndex: "",
-    desIndex: "",
+    // depIndex: "",
+    // desIndex: "",
     targetPrice: "",
   },
   methods: {
@@ -72,15 +72,23 @@ const app = new Vue({
       }
     },
     recipt: function () {
+      let depIndex = -1;
+      let desIndex = -1;
       this.targetPrice = 0;
       for (let i = 0; i < this.index; i++) {
         if (this.dep == this.arpCode[i]) {
-          this.depIndex = i;
+          depIndex = i;
         }
         if (this.des == this.arpCode[i]) {
-          this.desIndex = i;
+          desIndex = i;
         }
       }
+      // js では == と === がある。 == は比較するモノの型変換を勝手に行う。 === は型変換を行わない。
+      if (depIndex === -1 && desIndex === -1) {
+        this.computePrice(depIndex, desIndex);
+      }
+    },
+    computePrice: function (depIndex, desIndex) {
       this.targetPrice = this.price[this.depIndex][this.desIndex];
     },
   },
