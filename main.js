@@ -203,8 +203,9 @@ const app = new Vue({
       }
     },
     computePrice: function () {
-      const index = this.airport[this.dep].index;
+      const index = this.airport[this.des].index;
       const price = this.airport[this.dep].pricetable[index];
+      console.log(index);
       this.targetPrice = price;
     },
   },
