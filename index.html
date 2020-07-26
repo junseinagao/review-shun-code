@@ -4,11 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .application {
+        padding: 1em;
+      }
+    </style>
   </head>
   <body>
     <header><h1>Airport List</h1></header>
     <div id="app">
-      <div>
+      <div class="application">
         <div>Please enter the airport code you want to search from below.</div>
         <div v-for="value in arpCode">{{ value }}</div>
         <input type="text" v-model="targetCode" />
@@ -20,7 +25,7 @@
         </div>
         <div v-else>Sorry, not found.</div>
       </div>
-      <div>
+      <div class="application">
         <div>
           Please type the departure and destination. This app calculates the
           ticket price.
