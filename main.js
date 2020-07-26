@@ -63,7 +63,7 @@ const app = new Vue({
   methods: {
     search: function () {
       this.found = false; // なぜ文字列で"true"と""でv-if v-elseが動くのか:→"true"これはtrulyな値 true と判断される。→""これはfalsyな値。falseと判断される。s
-      for (let i = 0; i < this.index; i++) {
+      for (let i = 0; i < this.arpCode.length; i++) {
         if (this.targetCode == this.arpCode[i]) {
           this.found = true;
           this.targetCity = this.city[i];
